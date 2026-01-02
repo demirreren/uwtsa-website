@@ -1,18 +1,30 @@
 import type { Metadata } from 'next';
-import { Outfit, DM_Sans } from 'next/font/google';
+import { Space_Mono, Syne, Bebas_Neue } from 'next/font/google';
 import './globals.css';
 import { SITE_TITLE, SITE_DESCRIPTION, OG_IMAGE } from '@/config';
 
-const outfit = Outfit({
+// Bold, expressive display font
+const syne = Syne({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-display',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
-const dmSans = DM_Sans({
+// Iconic condensed font for big statements
+const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-body',
+  variable: '--font-heading',
+  weight: '400',
+});
+
+// Retro mono font for Y2K vibes
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
@@ -58,9 +70,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${dmSans.variable}`}>
-      <body className="font-body">{children}</body>
+    <html lang="en" className={`${syne.variable} ${bebasNeue.variable} ${spaceMono.variable}`}>
+      <body className="font-body bg-tsa-dark">{children}</body>
     </html>
   );
 }
-

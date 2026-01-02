@@ -1,100 +1,120 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Section } from './Section';
-import { Container } from './Container';
-import { Button } from './Button';
 import { TSA_EMAIL } from '@/config';
-
-const contactCards = [
-  {
-    title: 'Collaborations & Sponsorships',
-    description: 'Want to partner with us or sponsor an event? Let\'s create something amazing together.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-    subject: 'TSA collaboration',
-    buttonText: 'Email about partnerships',
-  },
-  {
-    title: 'Incoming Students & Questions',
-    description: 'New to UW? Have questions about TSA? We\'re here to help you get connected.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    subject: 'TSA question',
-    buttonText: 'Email with questions',
-  },
-];
 
 export function Contact() {
   return (
-    <Section id="contact" className="bg-tsa-cream">
-      <Container>
-        <div className="text-center mb-12">
+    <section id="contact" className="relative py-32 bg-tsa-cream text-tsa-dark overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 diagonal-stripes opacity-30" />
+
+      {/* Decorative shapes */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+        className="absolute top-20 right-20 w-40 h-40 border-4 border-tsa-red/20"
+      />
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+        className="absolute bottom-20 left-20 w-32 h-32 rounded-full border-4 border-tsa-dark/10"
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8">
+        {/* Section header */}
+        <div className="mb-16 text-center">
           <motion.span
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-tsa-red font-semibold text-sm uppercase tracking-wider mb-3"
+            className="inline-block font-mono text-tsa-red text-sm uppercase tracking-widest mb-4"
           >
-            Get in Touch
+            [005] GET IN TOUCH
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-bold text-tsa-charcoal mb-4"
+            className="text-huge font-display font-black leading-none"
           >
-            Let&apos;s connect
+            <span className="text-tsa-dark">LET&apos;S</span>
+            <br />
+            <span className="text-outline-red">CONNECT</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-600 max-w-2xl mx-auto"
-          >
-            Whether you want to collaborate, sponsor, or just say hi, we&apos;d love to hear from you.
-          </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
-          {contactCards.map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col"
+        {/* Contact cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Collabs card */}
+          <motion.div
+            initial={{ opacity: 0, x: -50, rotate: -3 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ rotate: -2, scale: 1.02 }}
+            className="y2k-border-red p-8 bg-white"
+          >
+            <div className="text-5xl mb-6">🤝</div>
+            <h3 className="font-display font-black text-2xl text-tsa-dark mb-4">
+              COLLABS &<br />SPONSORSHIPS
+            </h3>
+            <p className="font-mono text-gray-600 mb-6">
+              Want to partner with us or sponsor an event? Let&apos;s create something amazing.
+            </p>
+            <a
+              href={`mailto:${TSA_EMAIL}?subject=TSA%20Collaboration`}
+              className="btn-retro inline-flex items-center gap-2"
             >
-              <div className="w-14 h-14 rounded-2xl bg-tsa-red/10 text-tsa-red flex items-center justify-center mb-6">
-                {card.icon}
-              </div>
-              <h3 className="text-xl font-bold text-tsa-charcoal mb-3">{card.title}</h3>
-              <p className="text-gray-600 mb-6 flex-grow">{card.description}</p>
-              <Button
-                href={`mailto:${TSA_EMAIL}?subject=${encodeURIComponent(card.subject)}`}
-                variant="outline"
-                className="w-full justify-center"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                {card.buttonText}
-              </Button>
-            </motion.div>
-          ))}
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              EMAIL US
+            </a>
+          </motion.div>
+
+          {/* Questions card */}
+          <motion.div
+            initial={{ opacity: 0, x: 50, rotate: 3 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ rotate: 2, scale: 1.02 }}
+            className="y2k-border p-8 bg-white"
+          >
+            <div className="text-5xl mb-6">💬</div>
+            <h3 className="font-display font-black text-2xl text-tsa-dark mb-4">
+              INCOMING STUDENTS<br />& QUESTIONS
+            </h3>
+            <p className="font-mono text-gray-600 mb-6">
+              New to UW? Have questions? We&apos;re here to help you get connected.
+            </p>
+            <a
+              href={`mailto:${TSA_EMAIL}?subject=TSA%20Question`}
+              className="btn-retro inline-flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              ASK AWAY
+            </a>
+          </motion.div>
         </div>
-      </Container>
-    </Section>
+
+        {/* Direct email */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <p className="font-mono text-gray-500 mb-2">Or email us directly at</p>
+          <a
+            href={`mailto:${TSA_EMAIL}`}
+            className="font-display font-bold text-2xl md:text-3xl text-tsa-dark hover:text-tsa-red transition-colors"
+          >
+            {TSA_EMAIL}
+          </a>
+        </motion.div>
+      </div>
+    </section>
   );
 }
-

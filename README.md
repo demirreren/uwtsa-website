@@ -1,87 +1,74 @@
 # TSA UW - Turkish Students Association Website
 
-A modern, one-page scrollable website for the Turkish Students Association at the University of Waterloo.
+A bold, creative one-page website for the Turkish Students Association at the University of Waterloo. Features Y2K-inspired aesthetics, scroll-triggered animations, and expressive typography.
 
-## 🚀 Features
+## 🎨 Design Features
 
-- **One-page scroll design** - All content on a single page with smooth navigation
-- **Mobile-first** - Responsive design that looks great on all devices
-- **Accessible** - Good contrast, keyboard navigation, semantic HTML
-- **Fast** - Optimized images, minimal bundle size
-- **Easy updates** - Data-driven content for highlights and sponsors
-- **Modern stack** - Next.js 14, TypeScript, Tailwind CSS, Framer Motion
+- **Y2K Aesthetic** - Layered borders, outlined text, retro grid backgrounds
+- **Bold Typography** - Syne, Bebas Neue, and Space Mono fonts
+- **Scroll Animations** - Parallax effects, floating elements, colliding photos
+- **Dark Theme** - High contrast with TSA red accents
 
 ## 📁 Project Structure
 
 ```
-src/
-├── app/
-│   ├── globals.css      # Global styles with Tailwind
-│   ├── layout.tsx       # Root layout with fonts & SEO
-│   └── page.tsx         # Main page component
-├── components/
-│   ├── Navigation.tsx   # Sticky nav with smooth scroll
-│   ├── Hero.tsx         # Hero section with CTAs
-│   ├── About.tsx        # About cards
-│   ├── Highlights.tsx   # Photo grid + Instagram
-│   ├── Collabs.tsx      # Partner marquee
-│   ├── Sponsors.tsx     # Sponsor grid
-│   ├── FAQ.tsx          # Accordion FAQ
-│   ├── CTABand.tsx      # Mid-page CTA
-│   ├── Contact.tsx      # Contact cards
-│   ├── Footer.tsx       # Footer with social links
-│   └── ...              # Reusable UI components
-├── data/
-│   ├── highlights.ts    # Event highlights data
-│   ├── sponsors.ts      # Sponsors & collabs data
-│   └── faq.ts           # FAQ questions & answers
-└── config.ts            # Site configuration
+uwtsa-website/
+├── assets/
+│   ├── originals/         # Original source images (not used in build)
+│   └── README.md          # Asset documentation
+├── public/
+│   ├── logo.png           # TSA logo
+│   ├── photos/            # Website images (descriptive names)
+│   │   ├── event-*.jpg    # Major events
+│   │   ├── social-*.jpg   # Social gatherings
+│   │   └── collab-*.jpg   # Collaboration events
+│   └── sponsors/          # Sponsor logos
+├── src/
+│   ├── app/
+│   │   ├── globals.css    # Global styles + Y2K effects
+│   │   ├── layout.tsx     # Root layout with fonts
+│   │   └── page.tsx       # Main page
+│   ├── components/        # All UI components
+│   ├── config.ts          # Site configuration
+│   └── data/              # Data files (highlights, sponsors, FAQ)
+└── package.json
 ```
+
+## 🖼️ Image Naming Convention
+
+Images use descriptive names: `{type}-{description}.{ext}`
+
+| Prefix | Use |
+|--------|-----|
+| `event-` | Major events (Turkish Night, Kebab Night) |
+| `social-` | Casual gatherings (tea time, movie night) |
+| `collab-` | Collaborations with other clubs |
 
 ## ⚙️ Configuration
 
-Update `src/config.ts` with your actual values:
+Edit `/src/config.ts`:
 
 ```typescript
 export const WHATSAPP_COMMUNITY_URL = 'https://chat.whatsapp.com/YOUR_LINK';
 export const INSTAGRAM_URL = 'https://instagram.com/uwtsa';
-export const TSA_EMAIL = 'tsa@uwaterloo.ca';
+export const TSA_EMAIL = 'your-email@uwaterloo.ca';
 ```
-
-## 🖼️ Adding Images
-
-1. Place photos in `/public/photos/`
-2. Update `src/data/highlights.ts` with photo paths
-3. For sponsors, add logos to `/public/sponsors/`
 
 ## 📝 Updating Content
 
-### Highlights (Events)
-Edit `src/data/highlights.ts`:
-```typescript
-{
-  id: 'unique-id',
-  title: 'Event Name',
-  caption: 'Short description',
-  photoPath: '/photos/your-image.jpg',
-  tag: 'Food' | 'Dance' | 'Social' | 'Sports' | 'Culture' | 'Collab',
-  dateLabel: 'Fall 2024' // optional
-}
-```
+### Add New Event Photos
 
-### Sponsors
-Edit `src/data/sponsors.ts`:
-```typescript
-{
-  id: 'sponsor-id',
-  name: 'Sponsor Name',
-  logoPath: '/sponsors/logo.png', // optional
-  role: 'Sponsor' | 'Venue' | 'Caterer' | 'Partner'
-}
-```
+1. Save original to `/assets/originals/`
+2. Optimize and copy to `/public/photos/` with descriptive name
+3. Add entry to `/src/data/highlights.ts`
 
-### FAQ
-Edit `src/data/faq.ts` to add/update questions.
+### Update FAQ
+
+Edit `/src/data/faq.ts`
+
+### Add Sponsors
+
+Edit `/src/data/sponsors.ts`
 
 ## 🛠️ Development
 
@@ -89,33 +76,26 @@ Edit `src/data/faq.ts` to add/update questions.
 # Install dependencies
 npm install
 
-# Run development server
+# Start dev server
 npm run dev
 
 # Build for production
 npm run build
-
-# Start production server
-npm start
 ```
 
-## 🚀 Deployment
+## 🚀 Deploy
 
-This project is ready to deploy on Vercel:
-
-1. Push to GitHub
-2. Import to Vercel
-3. Deploy!
-
-Or run `vercel` CLI directly.
+Ready for Vercel - just connect your repo!
 
 ## 🎨 Brand Colors
 
-- **TSA Red**: `#D00000`
-- **White**: `#FFFFFF`
-- **Charcoal**: `#1F1F1F`
-- **Warm background**: `#FAF8F5`
+| Color | Hex | Use |
+|-------|-----|-----|
+| TSA Red | `#D00000` | Primary accent |
+| Dark | `#0A0A0A` | Background |
+| White | `#FFFFFF` | Text, borders |
+| Cream | `#FDF6E3` | Section backgrounds |
 
-## 📄 License
+---
 
 Made with ❤️ by TSA UW

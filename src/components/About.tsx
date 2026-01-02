@@ -1,98 +1,199 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Section } from './Section';
-import { Container } from './Container';
-import { Card, CardIcon, CardTitle, CardBody } from './Card';
+import { useRef } from 'react';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-const aboutCards = [
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-      </svg>
-    ),
-    title: 'Welcoming by design',
-    body: 'Open to all students. Turkish or not. First time or long time. You belong here.',
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-      </svg>
-    ),
-    title: 'Culture you feel',
-    body: 'Food nights, games, movie nights, match watch parties, tea chats, and traditional dance.',
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-    title: 'Built with campus',
-    body: 'Collabs with clubs and student groups across UW. Stronger together.',
-  },
+const stats = [
+  { number: '200+', label: 'MEMBERS' },
+  { number: '50+', label: 'EVENTS' },
+  { number: '10+', label: 'COLLABS' },
+  { number: '∞', label: 'MEMORIES' },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export function About() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const x1 = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+  const x2 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [-10, 10]);
+  const rotate2 = useTransform(scrollYProgress, [0, 1], [10, -10]);
+
   return (
-    <Section id="about">
-      <Container>
-        <div className="text-center mb-12">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="relative py-32 bg-tsa-dark overflow-hidden"
+    >
+      {/* Background elements */}
+      <div className="absolute inset-0 retro-grid opacity-30" />
+      
+      {/* Floating decorative text */}
+      <motion.div
+        style={{ x: x1 }}
+        className="absolute top-20 left-0 text-[200px] font-display font-black text-white/[0.02] whitespace-nowrap pointer-events-none"
+      >
+        CULTURE FOOD DANCE MUSIC
+      </motion.div>
+      <motion.div
+        style={{ x: x2 }}
+        className="absolute bottom-20 right-0 text-[200px] font-display font-black text-white/[0.02] whitespace-nowrap pointer-events-none"
+      >
+        COMMUNITY FRIENDS FAMILY
+      </motion.div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8">
+        {/* Section header */}
+        <div className="mb-20">
           <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-tsa-red font-semibold text-sm uppercase tracking-wider mb-3"
+            className="inline-block font-mono text-tsa-red text-sm uppercase tracking-widest mb-4"
           >
-            Who We Are
+            [001] WHO WE ARE
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-bold text-tsa-charcoal"
+            className="text-huge font-display font-black leading-none"
           >
-            More than a club—a community
+            <span className="text-white">NOT JUST A</span>
+            <br />
+            <span className="text-outline">CLUB</span>
+            <span className="text-tsa-red">—</span>
+            <span className="text-white">A FAMILY</span>
           </motion.h2>
         </div>
 
+        {/* Content grid */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          {/* Left: Photo collage */}
+          <div className="relative h-[600px]">
+            {/* Main photo */}
+            <motion.div
+              style={{ rotate: rotate1 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="absolute top-0 left-0 w-3/4"
+            >
+              <div className="y2k-border rounded-lg overflow-hidden">
+                <Image
+                  src="/photos/event-turkish-night-dance.jpg"
+                  alt="TSA Dance"
+                  width={400}
+                  height={500}
+                  className="object-cover aspect-[4/5]"
+                />
+              </div>
+            </motion.div>
+
+            {/* Overlapping photo */}
+            <motion.div
+              style={{ rotate: rotate2 }}
+              initial={{ opacity: 0, scale: 0.8, x: 50 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="absolute bottom-0 right-0 w-2/3"
+            >
+              <div className="y2k-border-red rounded-lg overflow-hidden">
+                <Image
+                  src="/photos/event-kebab-night.jpg"
+                  alt="TSA Food"
+                  width={350}
+                  height={400}
+                  className="object-cover aspect-[4/5]"
+                />
+              </div>
+            </motion.div>
+
+            {/* Floating sticker */}
+            <motion.div
+              initial={{ opacity: 0, rotate: -20, scale: 0 }}
+              whileInView={{ opacity: 1, rotate: -12, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, type: 'spring' }}
+              className="absolute top-1/2 right-0 z-20"
+            >
+              <div className="sticker bg-white text-tsa-dark px-6 py-4 rounded-lg font-display font-bold text-lg">
+                EVERYONE
+                <br />
+                WELCOME! ✦
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right: Text content */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <p className="text-2xl md:text-3xl font-display text-white leading-relaxed">
+                TSA brings students together through{' '}
+                <span className="text-tsa-red font-bold">Turkish culture</span>,
+                food, music, and genuine connection.
+              </p>
+              <p className="text-lg text-gray-400 font-mono leading-relaxed">
+                Whether you&apos;re Turkish, curious about the culture, or just looking for 
+                a community that feels like home—you belong here. No experience required. 
+                Just bring yourself.
+              </p>
+
+              {/* Highlight box */}
+              <div className="y2k-border-thin p-6 bg-tsa-dark">
+                <p className="font-mono text-sm text-gray-300 mb-2">// WHAT WE DO</p>
+                <div className="flex flex-wrap gap-3">
+                  {['Food Nights', 'Dance Events', 'Movie Nights', 'Watch Parties', 'Tea Time', 'Culture Fests'].map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1 border border-tsa-red text-tsa-red font-mono text-sm hover:bg-tsa-red hover:text-white transition-colors cursor-default"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Stats bar */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          className="grid md:grid-cols-3 gap-6 lg:gap-8"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          {aboutCards.map((card, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <Card className="h-full text-center md:text-left">
-                <CardIcon>{card.icon}</CardIcon>
-                <CardTitle>{card.title}</CardTitle>
-                <CardBody>{card.body}</CardBody>
-              </Card>
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
+              className="y2k-border p-6 text-center bg-tsa-dark cursor-default"
+            >
+              <div className="text-4xl md:text-5xl font-display font-black text-tsa-red mb-2">
+                {stat.number}
+              </div>
+              <div className="font-mono text-sm uppercase tracking-wider text-gray-400">
+                {stat.label}
+              </div>
             </motion.div>
           ))}
         </motion.div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }
-
