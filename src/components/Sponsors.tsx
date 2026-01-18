@@ -38,23 +38,37 @@ export function Sponsors() {
           className="flex flex-wrap justify-center gap-6"
         >
           {sponsors.map((sponsor, index) => (
-            <motion.div
+            <motion.a
               key={sponsor.id}
+              href={sponsor.website}
+              target={sponsor.website ? "_blank" : undefined}
+              rel={sponsor.website ? "noopener noreferrer" : undefined}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
-              className="y2k-border-thin px-8 py-6 bg-tsa-dark flex items-center gap-4"
+              className={`y2k-border-thin px-8 py-6 bg-tsa-dark flex items-center gap-4 ${sponsor.website ? 'cursor-pointer' : 'cursor-default'}`}
             >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-tsa-red to-white/20 flex items-center justify-center text-white font-display font-bold">
-                {sponsor.name.split(' ').map(w => w[0]).join('').slice(0, 2)}
-              </div>
+              {sponsor.logoPath ? (
+                <div className="relative w-20 h-20 flex items-center justify-center p-2">
+                  <div className="absolute inset-0 border border-white/10 rounded-sm"></div>
+                  <img
+                    src={sponsor.logoPath}
+                    alt={sponsor.name}
+                    className="relative max-w-full max-h-full object-contain z-10"
+                  />
+                </div>
+              ) : (
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-tsa-red to-white/20 flex items-center justify-center text-white font-display font-bold">
+                  {sponsor.name.split(' ').map(w => w[0]).join('').slice(0, 2)}
+                </div>
+              )}
               <div>
                 <p className="font-display font-bold text-white">{sponsor.name}</p>
                 <p className="font-mono text-xs text-tsa-red uppercase">{sponsor.role}</p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
 
           {/* Become a sponsor */}

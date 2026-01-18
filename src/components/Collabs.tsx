@@ -74,8 +74,12 @@ export function Collabs() {
                   whileHover={{ scale: 1.1, rotate: 3 }}
                   className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default"
                 >
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-tsa-red to-pink-500 flex items-center justify-center text-white font-display font-bold text-lg">
-                    {partner.shortName}
+                  <div className="relative w-16 h-16 flex items-center justify-center">
+                    <img
+                      src={partner.logoPath}
+                      alt={partner.name}
+                      className="max-w-full max-h-full object-contain"
+                    />
                   </div>
                   <span className="text-white font-display font-bold text-lg whitespace-nowrap">
                     {partner.name}

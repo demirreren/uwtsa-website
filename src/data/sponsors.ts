@@ -6,52 +6,66 @@ export interface Sponsor {
   website?: string;
 }
 
+export interface CollabPartner {
+  id: string;
+  name: string;
+  logoPath: string;
+}
+
 export const sponsors: Sponsor[] = [
   {
     id: 'wusa',
     name: 'WUSA',
-    logoPath: '/sponsors/wusa.png',
+    logoPath: '/sponsors/wusaa.jpeg',
     role: 'Partner',
     website: 'https://wusa.ca',
   },
   {
-    id: 'venue-partner',
-    name: 'SLC',
-    role: 'Venue',
+    id: 'waterloo',
+    name: 'University of Waterloo',
+    logoPath: '/sponsors/waterloo.jpg',
+    role: 'Partner',
+    website: 'https://uwaterloo.ca',
   },
   {
-    id: 'caterer-1',
-    name: 'Istanbul Kitchen',
-    role: 'Caterer',
+    id: 'pasha-bbq',
+    name: 'Pasha BBQ',
+    logoPath: '/sponsors/pashabbq.jpg',
+    role: 'Sponsor',
   },
-  // Add more sponsors here as needed
+  {
+    id: 'agha-turkish',
+    name: 'Agha Turkish Cuisine',
+    logoPath: '/sponsors/agha.jpg',
+    role: 'Sponsor',
+  },
 ];
 
-export const collabPartners = [
+export const collabPartners: CollabPartner[] = [
   {
-    id: 'albanian',
-    name: 'Albanian Student Association',
-    shortName: 'ASA',
+    id: 'albanians',
+    name: 'Albanians of WLU & UW',
+    logoPath: '/collabs/albaniansofwluanduw.jpg',
   },
   {
-    id: 'persian',
-    name: 'Persian Student Association',
-    shortName: 'PSA',
+    id: 'iranian',
+    name: 'Iranian Students Association of Waterloo',
+    logoPath: '/collabs/iranianstudentassociation.jpg',
   },
   {
-    id: 'romanian',
-    name: 'Romanian Student Association',
-    shortName: 'RSA',
+    id: 'mssa',
+    name: 'UWaterloo Malaysian and Singaporean Student Association',
+    logoPath: '/collabs/mssa.jpg',
+  },
+  {
+    id: 'rsa',
+    name: 'UW Romanian Student Association',
+    logoPath: '/collabs/rsa.jpg',
   },
   {
     id: 'tea-club',
     name: 'UW Tea Club',
-    shortName: 'Tea',
-  },
-  {
-    id: 'more',
-    name: 'And more...',
-    shortName: '+',
+    logoPath: '/collabs/uwteaclub.jpg',
   },
 ];
 
