@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { collabPartners } from '@/data/sponsors';
 
@@ -77,10 +78,12 @@ export function Collabs() {
                     className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default flex-shrink-0"
                   >
                     <div className="relative w-16 h-16 flex items-center justify-center">
-                      <img
+                      <Image
                         src={partner.logoPath}
                         alt={partner.name}
-                        className="max-w-full max-h-full object-contain"
+                        fill
+                        className="object-contain"
+                        sizes="64px"
                       />
                     </div>
                     <span className="text-white font-display font-bold text-lg whitespace-nowrap">
@@ -98,10 +101,12 @@ export function Collabs() {
                     className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default flex-shrink-0"
                   >
                     <div className="relative w-16 h-16 flex items-center justify-center">
-                      <img
+                      <Image
                         src={partner.logoPath}
                         alt={partner.name}
-                        className="max-w-full max-h-full object-contain"
+                        fill
+                        className="object-contain"
+                        sizes="64px"
                       />
                     </div>
                     <span className="text-white font-display font-bold text-lg whitespace-nowrap">

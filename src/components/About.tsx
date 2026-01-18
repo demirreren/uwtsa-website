@@ -154,7 +154,7 @@ export function About() {
 
               {/* Highlight box */}
               <div className="y2k-border-thin p-6 bg-tsa-dark">
-                <p className="font-mono text-sm text-gray-300 mb-2">// WHAT WE DO</p>
+                <p className="font-mono text-sm text-gray-300 mb-2">{'// WHAT WE DO'}</p>
                 <div className="flex flex-wrap gap-3">
                   {['Food Nights', 'Trivia', 'Dance Events', 'Movie Nights', 'Watch Parties', 'Sports', 'Tea Time', 'Bonfires', 'Culture Education', 'Career Networking'].map((item) => (
                     <span

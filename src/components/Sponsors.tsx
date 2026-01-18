@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { sponsors } from '@/data/sponsors';
 
@@ -53,10 +54,12 @@ export function Sponsors() {
               {sponsor.logoPath ? (
                 <div className="relative w-20 h-20 flex items-center justify-center p-2">
                   <div className="absolute inset-0 border border-white/10 rounded-sm"></div>
-                  <img
+                  <Image
                     src={sponsor.logoPath}
                     alt={sponsor.name}
-                    className="relative max-w-full max-h-full object-contain z-10"
+                    fill
+                    className="object-contain z-10"
+                    sizes="80px"
                   />
                 </div>
               ) : (
