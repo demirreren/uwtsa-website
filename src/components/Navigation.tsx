@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { WHATSAPP_COMMUNITY_URL, CLUB_SHORT_NAME } from '@/config';
+import { WHATSAPP_COMMUNITY_URL, CLUB_SHORT_NAME, SCHOOL_NAME } from '@/config';
 
 const navLinks = [
   { href: '#about', label: 'ABOUT' },
@@ -61,7 +61,7 @@ export function Navigation() {
               }}
               className="flex items-center gap-3 group"
             >
-              <div className="relative w-12 h-12 border-2 border-white p-1 group-hover:border-tsa-red transition-colors">
+              <div className="relative w-12 h-12 p-1">
                 <Image
                   src="/logo.png"
                   alt={`${CLUB_SHORT_NAME} Logo`}
@@ -71,8 +71,7 @@ export function Navigation() {
                 />
               </div>
               <span className="font-display font-bold text-xl hidden sm:block">
-                {CLUB_SHORT_NAME}
-                <span className="text-tsa-red">_</span>UW
+                {CLUB_SHORT_NAME} <span className="text-tsa-red">@</span> {SCHOOL_NAME}
               </span>
             </a>
 

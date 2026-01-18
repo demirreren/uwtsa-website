@@ -65,8 +65,11 @@ export function About() {
           >
             <span className="text-white">NOT JUST A</span>
             <br />
-            <span className="text-outline">CLUB</span>
-            <span className="text-tsa-red">—</span>
+            <span className="text-outline relative inline-block">
+              CLUB
+              <span className="absolute top-1/2 left-0 w-full h-0.5 bg-tsa-red transform -translate-y-1/2" style={{ transform: 'translateY(-50%) skewY(-2deg)' }}></span>
+            </span>
+            <br />
             <span className="text-white">A FAMILY</span>
           </motion.h2>
         </div>

@@ -98,22 +98,6 @@ export function Contact() {
             </a>
           </motion.div>
         </div>
-
-        {/* Direct email */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <p className="font-mono text-gray-500 mb-2">Or email us directly at</p>
-          <a
-            href={`mailto:${TSA_EMAIL}`}
-            className="font-display font-bold text-2xl md:text-3xl text-tsa-dark hover:text-tsa-red transition-colors"
-          >
-            {TSA_EMAIL}
-          </a>
-        </motion.div>
       </div>
     </section>
   );

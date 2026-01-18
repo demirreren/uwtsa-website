@@ -65,21 +65,9 @@ export function Hero() {
       {/* Main content */}
       <motion.div
         style={{ scale, opacity }}
-        className="relative z-10 min-h-screen flex flex-col justify-center px-4 sm:px-8 lg:px-16"
+        className="relative z-10 min-h-screen flex flex-col justify-center px-4 sm:px-8 lg:px-16 pt-32"
       >
         <div className="max-w-7xl mx-auto w-full">
-          {/* Top tag */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8"
-          >
-            <span className="inline-block px-4 py-2 border-2 border-white font-mono text-sm uppercase tracking-widest">
-              ✦ University of Waterloo
-            </span>
-          </motion.div>
-
           {/* Giant headline */}
           <div className="relative mb-12">
             <motion.h1
@@ -113,7 +101,7 @@ export function Hero() {
               </div>
               {/* Sticker badge */}
               <div className="absolute -bottom-4 -left-4 sticker bg-tsa-red text-white px-4 py-2 rounded-full font-mono text-sm font-bold">
-                EST. 2020 ✦
+                EST. 2024 ✦
               </div>
             </motion.div>
 

@@ -90,29 +90,6 @@ export function Collabs() {
           </div>
         </div>
 
-        {/* Collab stories */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {[
-            { title: 'Joint Events', desc: 'Cultural nights that blend traditions', icon: '🎭' },
-            { title: 'Shared Spaces', desc: 'Building community across groups', icon: '🤝' },
-            { title: 'New Friends', desc: 'Connections that last beyond events', icon: '✨' },
-          ].map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5, rotate: index === 1 ? 0 : index === 0 ? 2 : -2 }}
-              className="y2k-border-thin p-8 bg-tsa-dark"
-            >
-              <div className="text-5xl mb-4">{item.icon}</div>
-              <h3 className="font-display font-bold text-xl text-white mb-2">{item.title}</h3>
-              <p className="font-mono text-sm text-gray-400">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -4,9 +4,10 @@
 // ==========================================
 
 // Social & Contact Links
-export const WHATSAPP_COMMUNITY_URL = 'https://chat.whatsapp.com/YOUR_COMMUNITY_LINK';
+export const WHATSAPP_COMMUNITY_URL = 'https://chat.whatsapp.com/H3hOepBFbQzK4WoU2mLIPv';
 export const INSTAGRAM_URL = 'https://instagram.com/uwtsa';
-export const TSA_EMAIL = 'tsa@uwaterloo.ca';
+export const LINKEDIN_URL = 'https://www.linkedin.com/company/uwtsa/';
+export const TSA_EMAIL = 'uwtsa@clubs.wusa.ca';
 
 // Organization Info
 export const CLUB_NAME = 'Turkish Students Association';
