@@ -105,24 +105,6 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* Second floating photo */}
-            <motion.div
-              style={{ y: y1 }}
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="absolute -left-8 bottom-0 w-32 md:w-48 z-10 hidden lg:block"
-            >
-              <div className="y2k-border-red rounded-lg overflow-hidden rotate-6">
-                <Image
-                  src="/photos/event-kebab-night.jpg"
-                  alt="TSA Food"
-                  width={200}
-                  height={250}
-                  className="object-cover aspect-[4/5]"
-                />
-              </div>
-            </motion.div>
           </div>
 
           {/* Subtitle */}

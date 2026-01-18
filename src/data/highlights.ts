@@ -43,7 +43,7 @@ export const highlights: Highlight[] = [
     id: '5',
     title: 'Iftar Unity Night',
     caption: 'Iftar Unity Night',
-    photoPath: '/photos/event-culture-fest.jpg',
+    photoPath: '/photos/ramadan-celebration.jpg',
     tag: 'Culture',
     dateLabel: 'Winter 2025',
   },
