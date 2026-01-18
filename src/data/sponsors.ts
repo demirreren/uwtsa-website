@@ -32,12 +32,14 @@ export const sponsors: Sponsor[] = [
     name: 'Pasha BBQ',
     logoPath: '/sponsors/pashabbq.jpg',
     role: 'Sponsor',
+    website: 'https://www.instagram.com/pashabbqcom/',
   },
   {
     id: 'agha-turkish',
     name: 'Agha Turkish Cuisine',
     logoPath: '/sponsors/agha.jpg',
     role: 'Sponsor',
+    website: 'https://www.instagram.com/agharestaurantwaterloo/',
   },
 ];
 

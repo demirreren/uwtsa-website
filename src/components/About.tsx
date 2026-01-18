@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const stats = [
   { number: '200+', label: 'MEMBERS' },
-  { number: '50+', label: 'EVENTS' },
+  { number: '25+', label: 'EVENTS' },
   { number: '10+', label: 'COLLABS' },
   { number: '∞', label: 'MEMORIES' },
 ];
@@ -88,8 +88,8 @@ export function About() {
             >
               <div className="y2k-border rounded-lg overflow-hidden">
                 <Image
-                  src="/photos/event-turkish-night-dance.jpg"
-                  alt="TSA Dance"
+                  src="/photos/presentation.jpg"
+                  alt="TSA Presentation"
                   width={400}
                   height={500}
                   className="object-cover aspect-[4/5]"
@@ -108,8 +108,8 @@ export function About() {
             >
               <div className="y2k-border-red rounded-lg overflow-hidden">
                 <Image
-                  src="/photos/event-kebab-night.jpg"
-                  alt="TSA Food"
+                  src="/photos/club-fair.jpg"
+                  alt="TSA Club Fair"
                   width={350}
                   height={400}
                   className="object-cover aspect-[4/5]"
@@ -187,7 +187,9 @@ export function About() {
               whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
               className="y2k-border p-6 text-center bg-tsa-dark cursor-default"
             >
-              <div className="text-4xl md:text-5xl font-display font-black text-tsa-red mb-2">
+              <div className={`font-display font-black text-tsa-red mb-2 ${
+                stat.label === 'MEMBERS' ? 'text-3xl md:text-4xl' : 'text-4xl md:text-5xl'
+              }`}>
                 {stat.number}
               </div>
               <div className="font-mono text-sm uppercase tracking-wider text-gray-400">

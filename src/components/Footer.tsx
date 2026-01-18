@@ -24,7 +24,7 @@ export function Footer() {
           {/* Logo and tagline */}
           <div>
             <div className="flex items-center gap-4 mb-6">
-              <div className="relative w-16 h-16 border-2 border-white p-1">
+              <div className="relative w-16 h-16 p-1">
                 <Image
                   src="/logo.png"
                   alt={CLUB_SHORT_NAME}
@@ -34,7 +34,7 @@ export function Footer() {
               </div>
               <div>
                 <h3 className="font-display font-bold text-2xl">
-                  {CLUB_SHORT_NAME}<span className="text-tsa-red">_</span>UW
+                  {CLUB_SHORT_NAME} <span className="text-tsa-red">@</span> UW
                 </h3>
                 <p className="font-mono text-sm text-gray-400">{SCHOOL_NAME}</p>
               </div>

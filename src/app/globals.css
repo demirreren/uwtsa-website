@@ -140,16 +140,18 @@
   /* Marquee */
   .marquee-track {
     display: flex;
-    animation: marquee-scroll 25s linear infinite;
+    will-change: transform;
+    animation: marquee-scroll 20s linear infinite;
+    flex-shrink: 0;
   }
 
   .marquee-track:hover {
-    animation-play-state: paused;
+    animation-duration: 10s;
   }
 
   @keyframes marquee-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
   /* Floating animation */

@@ -66,26 +66,50 @@ export function Collabs() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="marquee-track"
+              className="flex"
             >
-              {[...collabPartners, ...collabPartners, ...collabPartners].map((partner, index) => (
-                <motion.div
-                  key={`${partner.id}-${index}`}
-                  whileHover={{ scale: 1.1, rotate: 3 }}
-                  className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default"
-                >
-                  <div className="relative w-16 h-16 flex items-center justify-center">
-                    <img
-                      src={partner.logoPath}
-                      alt={partner.name}
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  </div>
-                  <span className="text-white font-display font-bold text-lg whitespace-nowrap">
-                    {partner.name}
-                  </span>
-                </motion.div>
-              ))}
+              {/* First set */}
+              <div className="flex marquee-track">
+                {collabPartners.map((partner, index) => (
+                  <motion.div
+                    key={`${partner.id}-1-${index}`}
+                    whileHover={{ scale: 1.1, rotate: 3 }}
+                    className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default flex-shrink-0"
+                  >
+                    <div className="relative w-16 h-16 flex items-center justify-center">
+                      <img
+                        src={partner.logoPath}
+                        alt={partner.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                    <span className="text-white font-display font-bold text-lg whitespace-nowrap">
+                      {partner.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+              {/* Duplicate set for seamless loop */}
+              <div className="flex marquee-track" aria-hidden="true">
+                {collabPartners.map((partner, index) => (
+                  <motion.div
+                    key={`${partner.id}-2-${index}`}
+                    whileHover={{ scale: 1.1, rotate: 3 }}
+                    className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default flex-shrink-0"
+                  >
+                    <div className="relative w-16 h-16 flex items-center justify-center">
+                      <img
+                        src={partner.logoPath}
+                        alt={partner.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                    <span className="text-white font-display font-bold text-lg whitespace-nowrap">
+                      {partner.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
