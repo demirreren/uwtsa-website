@@ -7,6 +7,7 @@ import { WHATSAPP_COMMUNITY_URL, CLUB_SHORT_NAME, SCHOOL_NAME } from '@/config';
 
 const navLinks = [
   { href: '#about', label: 'ABOUT' },
+  { href: '#events', label: 'EVENTS' },
   { href: '#highlights', label: 'VIBES' },
   { href: '#collabs', label: 'COLLABS' },
   { href: '#faq', label: 'FAQ' },
@@ -44,7 +45,8 @@ export function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        style={{ top: 'var(--announcement-bar-h, 0px)' }}
+        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? 'bg-tsa-dark/95 backdrop-blur-md border-b-2 border-white/10'
             : 'bg-transparent'
