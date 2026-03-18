@@ -148,7 +148,7 @@ export function About() {
               </p>
               <p className="text-lg text-gray-400 font-mono leading-relaxed">
                 Whether you&apos;re Turkish, curious about the culture, or just looking for 
-                a community that feels like home—you belong here. No experience required. 
+                a community that feels like home. You belong here. No experience required. 
                 Just bring yourself.
               </p>
 

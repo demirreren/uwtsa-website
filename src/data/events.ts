@@ -9,36 +9,27 @@ export interface UpcomingEvent {
   ctaUrl: string;
   tag: string;
   imagePath?: string;
+  imageAspect?: 'square' | 'landscape';
   featured?: boolean;
   announcementLabel?: string;
 }
 
 export const upcomingEvents: UpcomingEvent[] = [
   {
-    id: 'iftar-night-2026',
-    title: 'Flavours of the Mediterranean: Iftar Night',
-    date: 'March 4, 2026',
-    time: '5:30 PM - 9:30 PM',
-    location: 'The Bomber',
-    description:
-      'Celebrate cultural heritage and community at this collaborative Iftar hosted by NASA, VFP, and TSA. Enjoy a communal dinner, live performances, cultural booths, and more. All proceeds go to charity!',
-    ctaLabel: 'Get Tickets',
-    ctaUrl: 'https://wusa.ca/event/flavours-of-the-mediterranean-iftar-night/',
-    tag: 'Culture',
-    imagePath: '/photos/iftar2026.png',
-    featured: true,
-  },
-  {
     id: 'career-event-2026',
-    title: 'Career Networking Social',
-    date: 'Late March 2026',
+    title: 'TSA Careers Night & Social',
+    date: 'March 24, 2026',
+    time: '6:00 PM - 10:00 PM',
+    location: "Maxwell's Concerts and Events",
     description:
       'Connect with industry professionals from a variety of fields for an evening of career insights and networking, followed by a dancing and social after!',
-    ctaLabel: 'Looking to Sponsor?',
-    ctaUrl: 'mailto:uwtsa@clubs.wusa.ca',
+    ctaLabel: 'Register (Free)',
+    ctaUrl: 'https://luma.com/sxtdj1sk',
     tag: 'Career',
+    imagePath: '/photos/career-night.png',
+    imageAspect: 'square',
     featured: true,
-    announcementLabel: 'Learn More',
+    announcementLabel: 'Register (Free)',
   },
   {
     id: 'turkiye-vs-romania-2026',

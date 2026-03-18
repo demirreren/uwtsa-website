@@ -57,10 +57,14 @@ export function AnnouncementBar() {
           <motion.button
             key={event.id}
             onClick={() => {
-              const section = document.querySelector('#events');
-              if (section) {
-                const offset = section.getBoundingClientRect().top + window.scrollY - 100;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
+              if (event.ctaUrl.startsWith('http')) {
+                window.open(event.ctaUrl, '_blank');
+              } else {
+                const section = document.querySelector('#events');
+                if (section) {
+                  const offset = section.getBoundingClientRect().top + window.scrollY - 100;
+                  window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
               }
             }}
             initial={{ opacity: 0, y: -8 }}
@@ -71,7 +75,7 @@ export function AnnouncementBar() {
           >
             <span className="inline-block w-2 h-2 rounded-full bg-white animate-pulse flex-shrink-0" />
             <span className="font-bold uppercase">{event.title}</span>
-            <span className="hidden sm:inline text-white/70">—</span>
+            <span className="hidden sm:inline text-white/70">-</span>
             <span className="hidden sm:inline text-white/80">{event.date}</span>
             <span className="font-bold border-b border-white/50 group-hover:border-white transition-colors">
               {event.announcementLabel || event.ctaLabel} →
