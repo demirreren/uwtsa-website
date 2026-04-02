@@ -1,6 +1,7 @@
 import {
   Navigation,
   Hero,
+  FeaturedEvent,
   About,
   Highlights,
   CTABand,
@@ -17,6 +18,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
+        <FeaturedEvent />
         <About />
         <Highlights />
         <CTABand />

@@ -6,6 +6,7 @@ export { Badge, CollabBadge } from './Badge';
 export { Accordion } from './Accordion';
 export { Navigation } from './Navigation';
 export { Hero } from './Hero';
+export { FeaturedEvent } from './FeaturedEvent';
 export { About } from './About';
 export { Highlights } from './Highlights';
 export { Collabs } from './Collabs';
