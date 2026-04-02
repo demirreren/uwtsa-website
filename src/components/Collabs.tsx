@@ -67,53 +67,53 @@ export function Collabs() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex"
             >
-              {/* First set */}
-              <div className="flex marquee-track">
-                {collabPartners.map((partner, index) => (
-                  <motion.div
-                    key={`${partner.id}-1-${index}`}
-                    whileHover={{ scale: 1.1, rotate: 3 }}
-                    className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default flex-shrink-0"
-                  >
-                    <div className="relative w-16 h-16 flex items-center justify-center">
-                      <Image
-                        src={partner.logoPath}
-                        alt={partner.name}
-                        fill
-                        className="object-contain"
-                        sizes="64px"
-                      />
-                    </div>
-                    <span className="text-white font-display font-bold text-lg whitespace-nowrap">
-                      {partner.name}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-              {/* Duplicate set for seamless loop */}
-              <div className="flex marquee-track" aria-hidden="true">
-                {collabPartners.map((partner, index) => (
-                  <motion.div
-                    key={`${partner.id}-2-${index}`}
-                    whileHover={{ scale: 1.1, rotate: 3 }}
-                    className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default flex-shrink-0"
-                  >
-                    <div className="relative w-16 h-16 flex items-center justify-center">
-                      <Image
-                        src={partner.logoPath}
-                        alt={partner.name}
-                        fill
-                        className="object-contain"
-                        sizes="64px"
-                      />
-                    </div>
-                    <span className="text-white font-display font-bold text-lg whitespace-nowrap">
-                      {partner.name}
-                    </span>
-                  </motion.div>
-                ))}
+              {/* Single animated strip: two copies so -50% scroll = one full list (McMaster leads at x=0) */}
+              <div className="marquee-track w-max">
+                <div className="flex shrink-0">
+                  {collabPartners.map((partner, index) => (
+                    <motion.div
+                      key={`${partner.id}-1-${index}`}
+                      whileHover={{ scale: 1.1, rotate: 3 }}
+                      className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default flex-shrink-0"
+                    >
+                      <div className="relative w-16 h-16 flex items-center justify-center">
+                        <Image
+                          src={partner.logoPath}
+                          alt={partner.name}
+                          fill
+                          className="object-contain"
+                          sizes="64px"
+                        />
+                      </div>
+                      <span className="text-white font-display font-bold text-lg whitespace-nowrap">
+                        {partner.name}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+                <div className="flex shrink-0" aria-hidden="true">
+                  {collabPartners.map((partner, index) => (
+                    <motion.div
+                      key={`${partner.id}-2-${index}`}
+                      whileHover={{ scale: 1.1, rotate: 3 }}
+                      className="inline-flex items-center gap-4 mx-4 px-8 py-5 y2k-border bg-tsa-dark cursor-default flex-shrink-0"
+                    >
+                      <div className="relative w-16 h-16 flex items-center justify-center">
+                        <Image
+                          src={partner.logoPath}
+                          alt={partner.name}
+                          fill
+                          className="object-contain"
+                          sizes="64px"
+                        />
+                      </div>
+                      <span className="text-white font-display font-bold text-lg whitespace-nowrap">
+                        {partner.name}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>

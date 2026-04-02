@@ -5,6 +5,66 @@ import { motion } from 'framer-motion';
 import { sponsors } from '@/data/sponsors';
 
 export function Sponsors() {
+  const featuredSponsors = sponsors.filter((sponsor) => sponsor.featured);
+  const supportingSponsors = sponsors.filter((sponsor) => !sponsor.featured);
+
+  const renderSupporterCard = (
+    sponsor: (typeof sponsors)[number],
+    index: number,
+    cardType: 'featured' | 'compact'
+  ) => {
+    const isFeatured = cardType === 'featured';
+
+    return (
+    <motion.a
+      key={sponsor.id}
+      href={sponsor.website}
+      target={sponsor.website ? "_blank" : undefined}
+      rel={sponsor.website ? "noopener noreferrer" : undefined}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
+      className={`y2k-border-thin bg-tsa-dark ${isFeatured ? 'px-7 py-6' : 'px-6 py-5'} ${sponsor.website ? 'cursor-pointer' : 'cursor-default'}`}
+    >
+      <div className={isFeatured ? 'space-y-4' : 'flex items-center gap-4'}>
+        {sponsor.logoPath ? (
+          <div
+            className={`relative overflow-hidden ${
+              isFeatured ? 'w-full h-24' : 'w-28 h-16 shrink-0'
+            }`}
+          >
+            <Image
+              src={sponsor.logoPath}
+              alt={sponsor.name}
+              fill
+              className="object-contain"
+              sizes={isFeatured ? "320px" : "112px"}
+            />
+          </div>
+        ) : (
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-tsa-red to-white/20 flex items-center justify-center text-white font-display font-bold">
+            {sponsor.name.split(' ').map(w => w[0]).join('').slice(0, 2)}
+          </div>
+        )}
+
+        <div className="space-y-1.5">
+          <div>
+            <p className={`font-display font-bold text-white ${isFeatured ? 'text-xl' : ''}`}>{sponsor.name}</p>
+            <p className="font-mono text-xs text-tsa-red uppercase">{sponsor.tier}</p>
+          </div>
+          {isFeatured && sponsor.description ? (
+            <p className="text-sm text-gray-300 max-w-3xl leading-relaxed">
+              {sponsor.description}
+            </p>
+          ) : null}
+        </div>
+      </div>
+    </motion.a>
+    );
+  };
+
   return (
     <section id="sponsors" className="relative py-24 bg-tsa-dark overflow-hidden">
       {/* Background */}
@@ -31,72 +91,51 @@ export function Sponsors() {
           </motion.h3>
         </div>
 
-        {/* Sponsors grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-6"
-        >
-          {sponsors.map((sponsor, index) => (
+        <div className="space-y-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {featuredSponsors.map((sponsor, index) => renderSupporterCard(sponsor, index, 'featured'))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {supportingSponsors.map((sponsor, index) => renderSupporterCard(sponsor, index + featuredSponsors.length, 'compact'))}
+          </motion.div>
+
+          <div className="flex justify-center">
+
+            {/* Become a sponsor */}
             <motion.a
-              key={sponsor.id}
-              href={sponsor.website}
-              target={sponsor.website ? "_blank" : undefined}
-              rel={sponsor.website ? "noopener noreferrer" : undefined}
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
-              className={`y2k-border-thin px-8 py-6 bg-tsa-dark flex items-center gap-4 ${sponsor.website ? 'cursor-pointer' : 'cursor-default'}`}
+              transition={{ delay: sponsors.length * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              className="y2k-border-glow px-8 py-6 bg-tsa-dark flex items-center gap-4 cursor-pointer"
             >
-              {sponsor.logoPath ? (
-                <div className="relative w-20 h-20 flex items-center justify-center p-2">
-                  <div className="absolute inset-0 border border-white/10 rounded-sm"></div>
-                  <Image
-                    src={sponsor.logoPath}
-                    alt={sponsor.name}
-                    fill
-                    className="object-contain z-10"
-                    sizes="80px"
-                  />
-                </div>
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-tsa-red to-white/20 flex items-center justify-center text-white font-display font-bold">
-                  {sponsor.name.split(' ').map(w => w[0]).join('').slice(0, 2)}
-                </div>
-              )}
+              <div className="w-12 h-12 rounded-full border-2 border-dashed border-tsa-red flex items-center justify-center text-tsa-red text-2xl">
+                +
+              </div>
               <div>
-                <p className="font-display font-bold text-white">{sponsor.name}</p>
-                <p className="font-mono text-xs text-tsa-red uppercase">{sponsor.role}</p>
+                <p className="font-display font-bold text-white">YOUR BRAND</p>
+                <p className="font-mono text-xs text-gray-400 uppercase">Become a sponsor</p>
               </div>
             </motion.a>
-          ))}
-
-          {/* Become a sponsor */}
-          <motion.a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: sponsors.length * 0.1 }}
-            whileHover={{ scale: 1.05 }}
-            className="y2k-border-glow px-8 py-6 bg-tsa-dark flex items-center gap-4 cursor-pointer"
-          >
-            <div className="w-12 h-12 rounded-full border-2 border-dashed border-tsa-red flex items-center justify-center text-tsa-red text-2xl">
-              +
-            </div>
-            <div>
-              <p className="font-display font-bold text-white">YOUR BRAND</p>
-              <p className="font-mono text-xs text-gray-400 uppercase">Become a sponsor</p>
-            </div>
-          </motion.a>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Thank you */}
         <motion.p
