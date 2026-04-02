@@ -9,7 +9,6 @@ import { WHATSAPP_COMMUNITY_URL, CLUB_SHORT_NAME, SCHOOL_NAME } from '@/config';
 
 const navLinks = [
   { href: '#about', label: 'ABOUT' },
-  { href: '#events', label: 'EVENTS' },
   { href: '#highlights', label: 'VIBES' },
   { href: '#collabs', label: 'COLLABS' },
   { href: '#faq', label: 'FAQ' },

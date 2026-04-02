@@ -165,26 +165,39 @@ export function Highlights() {
                 </a>
               </div>
 
-              {/* Right: Instagram preview */}
-              <div className="relative">
-                <motion.div
-                  whileHover={{ rotate: 3, scale: 1.02 }}
-                  className="photo-stack rounded-lg overflow-hidden"
+              {/* Right: Instagram preview — circular logo, no frame */}
+              <div className="relative w-fit mx-auto md:mx-0">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tsa-red focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-full"
                 >
-                  <Image
-                    src="/photos/instagram-preview.png"
-                    alt="TSA Instagram"
-                    width={500}
-                    height={500}
-                    className="object-cover aspect-square"
-                  />
-                </motion.div>
-                
-                {/* Floating elements */}
+                  <motion.div
+                    initial={{ rotate: 0, scale: 1, boxShadow: '0 0 0 transparent' }}
+                    whileHover={{
+                      rotate: -5,
+                      scale: 1.04,
+                      boxShadow:
+                        '0 0 28px rgba(208, 0, 0, 0.5), 0 0 56px rgba(208, 0, 0, 0.28), 0 12px 32px rgba(0, 0, 0, 0.12)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 24 }}
+                    className="rounded-full overflow-hidden bg-transparent"
+                  >
+                    <Image
+                      src="/photos/instagram-preview.png"
+                      alt="TSA Instagram"
+                      width={500}
+                      height={500}
+                      className="object-cover aspect-square select-none pointer-events-none"
+                    />
+                  </motion.div>
+                </a>
+
                 <motion.div
                   animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute -top-4 -right-4 bg-tsa-red text-white px-4 py-2 rounded-full font-mono text-sm font-bold"
+                  className="absolute -top-4 -right-4 bg-tsa-red text-white px-4 py-2 rounded-full font-mono text-sm font-bold pointer-events-none"
                 >
                   NEW! ✦
                 </motion.div>
